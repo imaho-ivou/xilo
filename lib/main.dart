@@ -27,6 +27,24 @@ class Xilo extends StatefulWidget {
 }
 
 class _XiloState extends State<Xilo> {
+  bouton(Color? couleur, String music) {
+    return Expanded(
+      child: SizedBox(
+        width: double.infinity,
+        child: TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(couleur!),
+          ),
+          onPressed: () {
+            player.setAsset(music);
+            player.play();
+          },
+          child: Text(''),
+        ),
+      ),
+    );
+  }
+
   @override
   late AudioPlayer player;
   @override
@@ -45,21 +63,7 @@ class _XiloState extends State<Xilo> {
     return SafeArea(
       child: Column(
         children: [
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note1.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
+          bouton(Colors.red, 'assets/audio/note1.wav'),
           Expanded(
             child: SizedBox(
               width: double.infinity,
@@ -68,8 +72,8 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.orange),
                 ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note2.wav');
+                onPressed: () {
+                  player.setAsset('assets/audio/note2.wav');
                   player.play();
                 },
                 child: Text(''),
@@ -84,8 +88,8 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.yellow),
                 ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note3.wav');
+                onPressed: () {
+                  player.setAsset('assets/audio/note3.wav');
                   player.play();
                 },
                 child: Text(''),
