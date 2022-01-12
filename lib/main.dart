@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:just_audio/just_audio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +28,19 @@ class Xilo extends StatefulWidget {
 
 class _XiloState extends State<Xilo> {
   @override
+  late AudioPlayer player;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
@@ -39,7 +52,10 @@ class _XiloState extends State<Xilo> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note1.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
@@ -52,7 +68,10 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.orange),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note2.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
@@ -65,7 +84,10 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.yellow),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note3.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
@@ -78,7 +100,10 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.lightGreen),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note4.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
@@ -91,7 +116,10 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.green),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note5.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
@@ -104,7 +132,10 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.blue),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note6.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
@@ -117,7 +148,10 @@ class _XiloState extends State<Xilo> {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.purple),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await player.setAsset('assets/audio/note7.wav');
+                  player.play();
+                },
                 child: Text(''),
               ),
             ),
