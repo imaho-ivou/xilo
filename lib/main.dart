@@ -27,6 +27,39 @@ class Xilo extends StatefulWidget {
 }
 
 class _XiloState extends State<Xilo> {
+  @override
+  late AudioPlayer player;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
+  var couleur = [
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.lightGreen,
+    Colors.blue,
+    Colors.purple
+  ];
+  var music = [
+    'assets/audio/note1.wav',
+    'assets/audio/note2.wav',
+    'assets/audio/note3.wav',
+    'assets/audio/note4.wav',
+    'assets/audio/note5.wav',
+    'assets/audio/note6.wav',
+    'assets/audio/note7.wav'
+  ];
+
   bouton(Color? couleur, String music) {
     return Expanded(
       child: SizedBox(
@@ -46,120 +79,17 @@ class _XiloState extends State<Xilo> {
   }
 
   @override
-  late AudioPlayer player;
-  @override
-  void initState() {
-    super.initState();
-    player = AudioPlayer();
-  }
-
-  @override
-  void dispose() {
-    player.dispose();
-    super.dispose();
-  }
-
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
         children: [
-          bouton(Colors.red, 'assets/audio/note1.wav'),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.orange),
-                ),
-                onPressed: () {
-                  player.setAsset('assets/audio/note2.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.yellow),
-                ),
-                onPressed: () {
-                  player.setAsset('assets/audio/note3.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.lightGreen),
-                ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note4.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green),
-                ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note5.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note6.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.purple),
-                ),
-                onPressed: () async {
-                  await player.setAsset('assets/audio/note7.wav');
-                  player.play();
-                },
-                child: Text(''),
-              ),
-            ),
-          ),
+          bouton(couleur[0], music[0]),
+          bouton(couleur[1], music[2]),
+          bouton(couleur[3], music[3]),
+          bouton(couleur[4], music[4]),
+          bouton(couleur[5], music[5]),
+          bouton(couleur[6], music[6]),
+          bouton(couleur[7], music[7]),
         ],
       ),
     );
